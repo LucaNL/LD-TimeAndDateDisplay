@@ -1,0 +1,54 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    overflow: hidden;
+    user-select: none;
+}
+
+#clock {
+    --size: 1.15;
+    --color: #ffffff;
+    --accent: #5ec8ff;
+    --x: 1.2vw;
+    --y: 1.2vh;
+    position: fixed;
+    font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+    font-size: calc(var(--size) * 1vh + 6px);
+    line-height: 1.3;
+    color: var(--color);
+    white-space: nowrap;
+    transition: opacity 0.25s ease;
+}
+
+#clock.hidden { opacity: 0; }
+#clock.bold .line { font-weight: 700; }
+#clock .line + .line { font-size: 0.78em; opacity: 0.9; font-weight: 600; }
+
+/* positions */
+#clock.top-left      { top: var(--y); left: var(--x); text-align: left; }
+#clock.top-center    { top: var(--y); left: 50%; transform: translateX(-50%); text-align: center; }
+#clock.top-right     { top: var(--y); right: var(--x); text-align: right; }
+#clock.bottom-left   { bottom: var(--y); left: var(--x); text-align: left; }
+#clock.bottom-center { bottom: var(--y); left: 50%; transform: translateX(-50%); text-align: center; }
+#clock.bottom-right  { bottom: var(--y); right: var(--x); text-align: right; }
+
+/* themes */
+#clock.shadow { text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9), 0 0 6px rgba(0, 0, 0, 0.6); }
+
+#clock.pill,
+#clock.glass {
+    padding: 0.45em 0.8em;
+    border-radius: 0.6em;
+}
+#clock.pill {
+    background: rgba(10, 12, 16, 0.72);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+}
+#clock.glass {
+    background: rgba(255, 255, 255, 0.10);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
+}
+#clock.pill .line:first-child,
+#clock.glass .line:first-child { color: var(--accent); }
